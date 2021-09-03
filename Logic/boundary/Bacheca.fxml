@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bean.BachecaBoundary">
+   <children>
+      <Text layoutX="27.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Benvenuti alla Bacheca Caritas ">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fx:id="nomeCaritas" layoutX="475.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Button layoutX="565.0" layoutY="157.0" mnemonicParsing="false" onAction="#creaEmail" prefHeight="58.0" prefWidth="101.0" text="Contatta Caritas" />
+      <Button layoutX="565.0" layoutY="260.0" mnemonicParsing="false" onAction="#creaDonazione" prefHeight="58.0" prefWidth="101.0" text="Crea Donazione" />
+      <TableView fx:id="tab" layoutX="27.0" layoutY="80.0" prefHeight="340.0" prefWidth="516.0">
+        <columns>
+          <TableColumn fx:id="tipologia" prefWidth="120.0" text="Tipologia" />
+          <TableColumn fx:id="descrizione" prefWidth="274.0" text="Descrizione" />
+            <TableColumn fx:id="urgenza" prefWidth="120.0" text="Urgenza" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
