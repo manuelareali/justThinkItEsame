@@ -24,7 +24,7 @@ if (request.getParameter("OK") != null) {
 } else if (request.getParameter("Tipologia").equalsIgnoreCase("Cibo")) {
 if ((RegistrationShopBoundary.registraNegozioPressed("Cibo", request.getParameter("NomeNegozio"),
 		request.getParameter("Password"),
-		request.getParameter("IndirizzoNeg") + request.getParameter("Via") + " " + request.getParameter("nCivico"),
+		request.getParameter("IndirizzoNeg") +" "+ request.getParameter("Via") + " " + request.getParameter("nCivico"),
 		request.getParameter("RecapitoTel"), request.getParameter("Email"), request.getParameter("Città")) == true)) {
 %>
 <jsp:forward page="log.jsp" />
@@ -131,14 +131,14 @@ if(request.getParameter("INDIETRO") != null){
 				
 				
 				  <div>
-						<input class="form-check-input" type="checkbox"name="Tipologia" value="Cibo"> <label
+						<input class="form-check-input" type="radio"name="Tipologia" value="Cibo"> <label
 							class="form-check-label" for="invalidCheck"> Cibo </label>
 					</div>
 				
 				
 				<div>
 					
-						<input class="form-check-input" type="checkbox" name="Tipologia" value="Vestiti"> <label
+						<input class="form-check-input" type="radio" name="Tipologia" value="Vestiti"> <label
 							class="form-check-label" for="invalidCheck"> Vestiti </label>
 					</div>
 				
