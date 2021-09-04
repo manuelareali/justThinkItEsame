@@ -1,22 +1,18 @@
 package bean;
 
 import java.util.Optional;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import controller.GestisciEventiController;
 import controller.ShopHomeController;
-import exception.MyIOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
+
+
 
 public class ShopHomeBoundary {
 	
@@ -46,7 +42,11 @@ public class ShopHomeBoundary {
     @FXML
     private Button gestisciProposteCaritas;
 
-  
+    private GestisciEventiController gest;
+    
+    public ShopHomeBoundary() {
+    	gest= new GestisciEventiController();
+    }
 
 
     @FXML
@@ -76,49 +76,14 @@ public class ShopHomeBoundary {
     
 
     @FXML
-    public void gestisciProposteCaritas(ActionEvent event) {
-    	Logger logger = LoggerFactory.getLogger(ShopHomeBoundary.class.getName());
-    	try {
-
-			FXMLLoader fxmlLoader = new FXMLLoader();
-			Parent rootNode = fxmlLoader.load(getClass().getResourceAsStream("/boundary/EventiPropNeg.fxml"));
-
-			GestisciEventiPropCaritas gestisciProp = fxmlLoader.getController();
-			Stage stage = (Stage) gestEvent.getScene().getWindow();
-			stage.setTitle("Gestisci Eventi Proposti dalle Caritas");
-			gestisciProp.loadShop(idShop);
-			stage.setScene(new Scene(rootNode, 800, 500));
-			stage.setResizable(false);
-			stage.show();
-
-		}catch (Exception e) {
-			logger.error(e.getMessage());
-			MyIOException.openPageFault("Shope event propose");
-		}
+    public void gestisciProposteCaritas() {
+    	gest.gestisciProposte(gestisciProposteCaritas.getScene().getWindow(), idShop);
     }
 
     
 	@FXML
 	public void gestisciEventi(ActionEvent event) {
-		Logger logger = LoggerFactory.getLogger(ShopHomeBoundary.class.getName());
-		try {
-
-			FXMLLoader fxmlLoader = new FXMLLoader();
-			Parent rootNode = fxmlLoader.load(getClass().getResourceAsStream("/boundary/Eventi2.fxml"));
-
-			GestisciEventiBoundary gestisciBoundary = fxmlLoader.getController();
-			Stage stage = (Stage) gestEvent.getScene().getWindow();
-			stage.setTitle("Gestisci Eventi");
-			gestisciBoundary.loadShop(idShop);
-			stage.setScene(new Scene(rootNode, 800, 500));
-			stage.setResizable(false);
-			stage.show();
-
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			MyIOException.openPageFault("shop Event");
-		}
-
+		gest.gestEventi(gestEvent.getScene().getWindow(), idShop);
 	}
  
   

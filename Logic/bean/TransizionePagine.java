@@ -28,6 +28,7 @@ public class TransizionePagine {
 
 	private static Logger logger = LoggerFactory.getLogger(TransizionePagine.class.getName());
 
+
 	
 	
 	public void visualizzaUserHomePage( Window stage, int idUser) {

@@ -1,32 +1,29 @@
 package bean;
 
-import java.io.IOException;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javafx.scene.input.MouseEvent;
 import controller.GestisciEventiController;
-import controller.ShopHomeController;
+import controller.ProponiOfferta;
 import entity.EventTab;
 import exception.MyException;
-import exception.MyIOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
+
 
 public class GestisciEventiPropCaritas {
 
 	private EventTab event;
 	private int idShop;
+	private int idEv;
 	private GestisciEventiController gestisciEventiC;
 	
 	Logger logger = LoggerFactory.getLogger(GestisciEventiPropCaritas.class.getName());
@@ -76,24 +73,8 @@ public class GestisciEventiPropCaritas {
     @FXML
     void proposteNegozi(ActionEvent event) {
 	
-				try {
-					check();
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/ProposteOfferte.fxml"));
-					Parent root = loader.load();
-
-					Stage stage = (Stage) proposteNegozi.getScene().getWindow();
-					ProponiOffertaCaritas proponiOfferta = loader.getController();
-					proponiOfferta.load(idShop, this.event.getId());
-					stage.setTitle("Proponi Offerta alla Caritas");
-					stage.setScene(new Scene(root, 600, 450));
-					stage.setResizable(false);
-
-					stage.show();
-
-				} catch (Exception e) {
-					logger.error(e.getMessage());
-					MyIOException.openPageFault("Proposte Offerte");
-				}
+				ProponiOfferta prop = new ProponiOfferta();
+				prop.proposte(proposteNegozi.getScene().getWindow(), idShop, this.event.getId() );
 			}
 		
     

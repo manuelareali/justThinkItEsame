@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import bean.GestisciEventiPropCaritas;
+import bean.ProponiOffertaCaritas;
 import dao.OfferteNegoziCaritas;
 import entity.Offerte;
 import exception.MyIOException;
@@ -54,5 +55,26 @@ public class ProponiOfferta {
 	
 	public List<Offerte> caricaOfferte(int idCar){
 		return this.offerte.cercaOfferteCaritas(idCar);
+	}
+
+public void proposte(Window proposteNegozi, int idShop, int event) {
+ 	Logger logger = LoggerFactory.getLogger(ProponiOfferta.class.getName());
+	try {	
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/ProposteOfferte.fxml"));
+		Parent root = loader.load();
+
+		Stage stage = (Stage) proposteNegozi.getScene().getWindow();
+		ProponiOffertaCaritas proponiOfferta = loader.getController();
+		proponiOfferta.load(idShop, event);
+		stage.setTitle("Proponi Offerta alla Caritas");
+		stage.setScene(new Scene(root, 600, 450));
+		stage.setResizable(false);
+
+		stage.show();
+
+	} catch (Exception e) {
+		logger.error(e.getMessage());
+		MyIOException.openPageFault("Proposte Offerte");
+	}
 	}
 }

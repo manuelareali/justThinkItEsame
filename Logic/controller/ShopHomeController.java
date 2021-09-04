@@ -3,7 +3,6 @@ package controller;
 import dao.ShopRepository;
 import dao.UserDao;
 import entity.ShopUser;
-import javafx.stage.Window;
 
 public class ShopHomeController {
 
