@@ -23,7 +23,6 @@ public class GestisciEventiPropCaritas {
 
 	private EventTab event;
 	private int idShop;
-	private int idEv;
 	private GestisciEventiController gestisciEventiC;
 	
 	Logger logger = LoggerFactory.getLogger(GestisciEventiPropCaritas.class.getName());
