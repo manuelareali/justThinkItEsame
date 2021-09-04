@@ -24,7 +24,7 @@ public class BachecaBoundary {
 		}
 	
 	private BachecaBoundary(){
-		bachecaController = BachecaController.getInstance();
+		bachecaController =  new BachecaController();
 	}
 	
 	
@@ -41,7 +41,7 @@ public class BachecaBoundary {
 	
  	
 	public List<Necessita> loadNecessita(){
-		return bachecaController.getInstance().loadForm(this.idCar);
+		return bachecaController.loadForm(this.idCar);
 	}
 	
 	public void loadFormBoundary(int idCar, int idUte) {

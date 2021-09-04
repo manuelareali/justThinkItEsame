@@ -1,5 +1,6 @@
 package bean;
 
+import java.io.IOException;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import com.sothawo.mapjfx.Projection;
 import controller.CaritasHomeController;
 import controller.CercaCaritasController;
 import controller.ShopHomeController;
+import controller.UserHomeController;
 import exception.MyIOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,6 +30,23 @@ public class TransizionePagine {
 
 	
 	
+	public void visualizzaUserHomePage( Window stage, int idUser) {
+		 try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/UserHomePage.fxml"));
+				Parent root = loader.load();
+				UserHomeBoundary userHomeBoundary;
+				UserHomeController userHomeController = new UserHomeController();
+				userHomeBoundary = loader.getController();
+				userHomeController.initDataCont(idUser,userHomeBoundary);
+				Stage home = (Stage) stage;
+				home.setScene(new Scene(root, 800, 600));
+				
+				home.show();
+			} catch (IOException e) {
+				logger.error(e.getMessage());
+				MyIOException.openPageFault("VolunteerHomePage");
+			}	
+	}
 	
 	
 	public void visualizzaShopHomePage( Window stage, int idShop) {

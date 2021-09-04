@@ -70,12 +70,12 @@ public class DonationBoundary {
 		}
 		
 		if(indirizzo.getText().isEmpty()) {
-			throw new MyException("Devi selezionare una riga della taballa",MyException.CAMPI_VUOTI);
+			throw new MyException("Alcuni campi sono vuoti",MyException.CAMPI_VUOTI);
 
 		}
 		
 		if(!cibo.isSelected() && !vestiti.isSelected())  {
-			throw new MyException("Devi selezionare una riga della taballa",MyException.CAMPI_VUOTI);
+			throw new MyException("Alcuni campi sono vuoti",MyException.CAMPI_VUOTI);
 
 		}
 		

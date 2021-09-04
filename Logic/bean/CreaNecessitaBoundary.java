@@ -24,7 +24,7 @@ public class CreaNecessitaBoundary {
 	private Logger logger = LoggerFactory.getLogger(CreaNecessitaBoundary.class.getName());
 	private String[] tipo = { "Vestiti", "Cibo" };
 	private String[] urg = { "Alta", "Normale", "Bassa" };
-
+	CreaNecessitaController creaNec = new CreaNecessitaController();
 	private TextArea[] text;
 
 
@@ -55,7 +55,7 @@ public class CreaNecessitaBoundary {
 
 	@FXML
 	void creaAnnuncioPressed(ActionEvent event) {
-		CreaNecessitaController creaNec = new CreaNecessitaController();
+		
 		creaNec.inizializza(idCaritas);
 		try{
 			checker();
@@ -97,21 +97,7 @@ public class CreaNecessitaBoundary {
 	}
 
 	public void switchPage(Window stage) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/Bacheca_Personale.fxml"));
-			Parent root = loader.load();
-
-			Stage home = (Stage) stage;
-			home.setScene(new Scene(root, 775, 500));
-			home.show();
-
-			BachecaPersonaleBoundary bacheca = loader.getController();
-			bacheca.loadFormBoundary(idCaritas);
-
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			MyIOException.openPageFault("Bacheca Personale");
-		}
+		creaNec.apriBachecaPersonale(this.idCaritas, stage);
 	}
 
 }

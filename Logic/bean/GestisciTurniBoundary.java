@@ -67,12 +67,11 @@ public class GestisciTurniBoundary {
 
 	private GestioneTurniCaritas gestTurn;
 
-	private CreaTurnoBoundary caritasTurniBoundary;
+
 
 
 	public GestisciTurniBoundary() {
 		this.gestTurn = new GestioneTurniCaritas();
-		this.caritasTurniBoundary = new CreaTurnoBoundary();
 	}
 
 	@FXML
@@ -88,20 +87,7 @@ public class GestisciTurniBoundary {
 
 	@FXML
 	void creaTurno(ActionEvent event) {
-			try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/CreaTurno.fxml"));
-				Parent root = loader.load();
-
-				this.caritasTurniBoundary = loader.getController();
-				this.caritasTurniBoundary.setCaritas(caritas);
-				Stage home = (Stage) creaTurn.getScene().getWindow();
-				home.setScene(new Scene(root, 780, 500));
-
-				home.show();
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-				MyIOException.openPageFault("Gestisci Turni Caritas");
-			}
+	 gestTurn.apriCreaTurno(caritas, creaTurn.getScene().getWindow());
 		}
 	
 

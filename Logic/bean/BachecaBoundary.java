@@ -24,9 +24,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class BachecaBoundary {
-	private static Logger logger = LoggerFactory.getLogger(BachecaBoundary.class.getName());
 	private int idCar;
 	private int idUte;
+	BachecaController bachecaController = new BachecaController();
 
 	@FXML
 	private Text nomeCaritas;
@@ -54,63 +54,21 @@ public class BachecaBoundary {
 
 	@FXML
 	void creaDonazione(ActionEvent event) {
-		try {
 
-			DonationBoundary donationBoundary;
-
-			FXMLLoader fxmlLoader = new FXMLLoader();
-			Parent rootNode = fxmlLoader.load(getClass().getResourceAsStream("/boundary/Donation.fxml"));
-
-			donationBoundary = fxmlLoader.getController();
-
-			Stage stage = new Stage();
-			stage.setTitle("Donazione");
-			donationBoundary.initBoundary(idCar, idUte);
-			stage.setScene(new Scene(rootNode, 800, 500));
-			stage.setResizable(false);
-			stage.show();
-
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			MyIOException.openPageFault("Donazione");
-		}
-
+		bachecaController.apriPaginaDonazione(idCar, idUte);
 	}
 
 	@FXML
 	void creaEmail(ActionEvent event) {
 
-		EmailBoundary emailBoundary;
-
-		try {
-
-			FXMLLoader fxmlLoader = new FXMLLoader();
-
-			Parent rootNode = fxmlLoader.load(getClass().getResourceAsStream("/boundary/Email.fxml"));
-
-			emailBoundary = fxmlLoader.getController();
-
-			Stage stage = new Stage();
-			stage.setTitle("Email");
-
-			stage.setScene(new Scene(rootNode, 800, 500));
-			stage.setResizable(false);
-
-			emailBoundary.loadEmail(idCar, idUte);
-
-			stage.show();
-
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			MyIOException.openPageFault("Email");
-		}
+		bachecaController.apriPaginaEmail(idCar, idUte);
 
 	}
 
 	public void loadFormBoundary(int idCar, int idUte) {
 		this.idCar = idCar;
 		this.idUte = idUte;
-		BachecaController bachecaController = new BachecaController();
+	
 		List<Necessita> necessita = bachecaController.loadForm(idCar);
 
 		ObservableList<Necessita> data = FXCollections.observableArrayList(necessita);

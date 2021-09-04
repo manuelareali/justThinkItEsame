@@ -1,7 +1,7 @@
 package controller;
 
 import dao.LoginDao;
-import dao.UserDao;
+
 
 public class LoginController {
 	private LoginDao login;
@@ -21,5 +21,7 @@ public class LoginController {
 	public int trovaID(String user) {
 		return  login.returnID(user);
 	}
+	
+
 
 }

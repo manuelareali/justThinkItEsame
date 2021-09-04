@@ -1,9 +1,5 @@
 package exception;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import beanweb.BachecaPersonaleBoundary;
 
 public class Trigger {
 
@@ -27,7 +23,7 @@ public class Trigger {
 				throw new MyException(" Seleziona una riga della tabella",MyException.CAMPI_VUOTI);
  
 		  }else{
-			 if(Float.parseFloat(str)== 0) {	
+			 if(Integer.parseInt(str)== 0) {	
 					throw new MyException("L'id passato non è corretto",MyException.CARITAS_ERROR);
 }  
 		  }

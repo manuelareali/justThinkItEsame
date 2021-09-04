@@ -30,7 +30,8 @@ public class BachecaPersonaleBoundary {
 	private static Logger logger = LoggerFactory.getLogger(BachecaPersonaleBoundary.class.getName());
 	private int caritas;
 	private Necessita necc;
-	
+	BachecaPersonaleController bachecaPersC = new BachecaPersonaleController();
+
 	
 	@FXML
 	private TableView<Necessita> bacheca;
@@ -57,40 +58,13 @@ public class BachecaPersonaleBoundary {
 
 	@FXML
 	void backPressed(ActionEvent event) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/CaritasHomePage.fxml"));
-			Parent root = loader.load();
-			CaritasHomeBoundary homeC = loader.getController();
-		
-			CaritasHomeController caritasHomeC = new CaritasHomeController();
-			caritasHomeC.initDataCaritas(caritas, homeC);
-
-			Stage home = (Stage) back.getScene().getWindow();
-			home.setScene(new Scene(root, 800, 600));
-
-			home.show();
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			MyIOException.openPageFault("Caritas Home Page");
-		}
+    bachecaPersC.back(caritas, back.getScene().getWindow());
 
 	}
 
 	@FXML
 	void creaNecessita(ActionEvent event) {
-			try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/Crea_Necessita.fxml"));
-				Parent root = loader.load();
-				CreaNecessitaBoundary creaNec = loader.getController();
-				creaNec.setCaritas2(caritas);
-				Stage home = (Stage) necessita.getScene().getWindow();
-				home.setScene(new Scene(root, 600, 400));
-
-				home.show();
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-				MyIOException.openPageFault("Crea Necessita");
-			}
+		bachecaPersC.apriPaginaNecessita(caritas, necessita.getScene().getWindow());
 		}
 		
 	
@@ -114,7 +88,7 @@ public class BachecaPersonaleBoundary {
 	public boolean check() throws MyException{
 		if(this.necc == null) {
 			
-			throw new MyException("Devi selezionare una riga della taballa",MyException.CARITAS_ERROR);
+			throw new MyException("Devi selezionare una riga della tabella",MyException.CARITAS_ERROR);
 			
 		}
 		return true;

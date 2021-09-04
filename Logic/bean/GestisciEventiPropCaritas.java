@@ -102,7 +102,7 @@ public class GestisciEventiPropCaritas {
     
 	public boolean check() throws MyException{
 		if(this.event == null) {
-			throw new MyException("Devi selezionare una riga della taballa",MyException.NEGOZIO_ERROR);
+			throw new MyException("Devi selezionare una riga della tabella",MyException.NEGOZIO_ERROR);
 
 		}
 		return true;

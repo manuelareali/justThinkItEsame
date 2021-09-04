@@ -26,7 +26,6 @@ public class GestisciEventiCaritasBoundary {
 	private static Logger logger = LoggerFactory.getLogger(GestisciEventiCaritasBoundary.class.getName());
 	private GestisciEventiCaritasController gestEventC;
 	private int idCar;
-	private PromuoviEventoGenerale promEv;
 	private EventTab event;
 	
 
@@ -113,7 +112,7 @@ public class GestisciEventiCaritasBoundary {
 	
 	public boolean check() throws MyException{
 		if(this.event == null) {
-			throw new MyException("Devi selezionare una riga della taballa",MyException.CARITAS_ERROR);
+			throw new MyException("Devi selezionare una riga della tabella",MyException.CARITAS_ERROR);
 	
 		}
 		return true;
@@ -143,25 +142,12 @@ public class GestisciEventiCaritasBoundary {
 	
     @FXML
     void creaEventoGenerale(ActionEvent event) {
-			try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/ProponiEventoGenerale.fxml"));
-				Parent root = loader.load();
-				this.promEv = loader.getController();
-				this.promEv.loadId(idCar);
-				Stage home = (Stage) creaEventoGenerale.getScene().getWindow();
-				home.setScene(new Scene(root, 750, 500));
-
-				home.show();
-			}  catch (Exception e) {
-				logger.error(e.getMessage());
-				MyIOException.openPageFault("Proponi Evento Generale");
-			}
+    	gestEventC.apriPaginaEvento(idCar, creaEventoGenerale.getScene().getWindow());
 		}
     
 
 	public GestisciEventiCaritasBoundary() {
 		gestEventC = new GestisciEventiCaritasController();
-		promEv = new PromuoviEventoGenerale();
 	}
 
 }

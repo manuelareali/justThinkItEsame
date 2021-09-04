@@ -27,7 +27,7 @@ public class CreaNecessitaBoundary {
 	    	if (tipologia == null || tipologia.equals("") || urgenza == null || urgenza.equals("") || richiesta == null || richiesta.equals("")) {
 	    		return false;
 	    	}else {
-	    		CreaNecessitaController creaNec = CreaNecessitaController.getInstace();
+	    		CreaNecessitaController creaNec = new CreaNecessitaController();
 	    		creaNec.inizializza(idCaritas);
 	    		creaNec.creaNecessita(tipologia, urgenza, richiesta);
 	    		return true;

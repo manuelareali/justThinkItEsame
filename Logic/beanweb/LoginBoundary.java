@@ -3,8 +3,6 @@ package beanweb;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import bean.BachecaBoundary;
 import controller.CaritasHomeController;
 import controller.LoginController;
 import controller.ShopHomeController;
@@ -18,9 +16,7 @@ public class LoginBoundary {
 
 
 	private LoginController loginC = new LoginController();
-
 	private beanweb.UserHomeBoundary userHomeBoundary;
-
 	private beanweb.ShopHomeBoundary shopHomeBoundary;
 	private beanweb.CaritasHomeBoundary caritasHomeBoundary;
 

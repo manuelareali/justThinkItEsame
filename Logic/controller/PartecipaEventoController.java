@@ -8,15 +8,8 @@ import dao.EventoDao;
 public class PartecipaEventoController {
 
 	private PartecipaEvento partecipaz;
-	private static PartecipaEventoController instance = null;
 
 
-	public static PartecipaEventoController  getInstance() {
-		if(instance == null) {
-			instance = new PartecipaEventoController ();
-		}
-		return instance;
-		}
 	
 	public void apriPartecipaEvento(int idEvento, int idUtente , Float importo, Window partecipa) {
 		setDataController(idEvento, idUtente);

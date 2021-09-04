@@ -48,8 +48,8 @@ public class PrenotaTurnoBoundary {
 	void prenotaTurno(ActionEvent event) {
 		try {
 			if(checker()) {
-				PrenotaTurnoController prenotaC = new PrenotaTurnoController();
-				prenotaC.prenotaTurnoContr(turni.getValue().toString(), cbOraInizio.getValue().toString(),
+				PrenotaTurnoController prenotaContr = new PrenotaTurnoController();
+				prenotaContr.prenotaTurnoContr(turni.getValue().toString(), cbOraInizio.getValue().toString(),
 						cbOraFine.getValue().toString(), cv.getText(), prenota.getScene().getWindow());
 			}
 		} catch (MyException e) {

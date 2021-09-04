@@ -50,6 +50,7 @@ public class CercaCaritas {
 		CARITASMARKER, EVENTO, DONAZIONE, MAP
 	}
 	
+	
 	private static final String EVE = "buttonEvento";
 	private static final String PRO = "buttonPromuoviEvento";
 	private static final String ALL = "buttonAllLocations";
@@ -77,6 +78,7 @@ public class CercaCaritas {
 	private static final int ZOOMDEFAULT = 14;
 
 	/** the markers. */
+
 	private CercaCaritasController cercaController;
 
 	private List<MarkerID> markerCaritas;
@@ -216,60 +218,19 @@ public class CercaCaritas {
 	
 	String	s = "errore IoException";
 	private void indietro() {
+		TransizionePagine switchPage = new TransizionePagine();
 	
 	if (ruolo.equals(VOLUNTEER)) {
-		 try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/UserHomePage.fxml"));
-				Parent root = loader.load();
-				UserHomeBoundary userHomeBoundary;
-				UserHomeController userHomeController = new UserHomeController();
-				userHomeBoundary = loader.getController();
-				userHomeController.initDataCont(this.idUser,userHomeBoundary);
-				Stage home = (Stage) buttonBack.getScene().getWindow();
-				home.setScene(new Scene(root, 800, 600));
-				
-				home.show();
-			} catch (IOException e) {
-				logger.error(s);
-			}	
+		switchPage.visualizzaUserHomePage(buttonBack.getScene().getWindow(), this.idUser);
 	}
 	
 	
 	else if(ruolo.equalsIgnoreCase(SHOP)) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/ShopHomePage.fxml"));
-			Parent root = loader.load();
-			ShopHomeBoundary shopHomeBoundary;
-			ShopHomeController shopHomeC = new ShopHomeController();
-			shopHomeBoundary = loader.getController();
-			shopHomeC.initDataShop(this.idUser, shopHomeBoundary);
-			Stage home = (Stage) buttonBack.getScene().getWindow();
-			home.setScene(new Scene(root, 800, 600));
-			
-			home.show();
-			
-		} catch (IOException e) {
-			logger.error(s);
-		}
+		switchPage.visualizzaShopHomePage(buttonBack.getScene().getWindow(), this.idUser);
 	}
 	
 	else if(ruolo.equalsIgnoreCase(CARITAS)) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/CaritasHomePage.fxml"));
-			Parent root = loader.load();
-			CaritasHomeBoundary caritasHomeBoundary;
-			CaritasHomeController caritasHomeC = new CaritasHomeController();
-			caritasHomeBoundary = loader.getController();
-			caritasHomeC.initDataCaritas(this.idUser, caritasHomeBoundary);
-			Stage home = (Stage) buttonBack.getScene().getWindow();
-			home.setScene(new Scene(root, 800, 600));
-			
-			home.show();
-			
-		}  catch (Exception e) {
-			logger.error(e.getMessage());
-			MyIOException.openPageFault("Caritas Home Page");
-		}
+		switchPage.backToMenuCaritas(idUser, buttonBack.getScene().getWindow());
 	}
 
 	}
@@ -279,119 +240,27 @@ public class CercaCaritas {
 	
 	private void promuoviEvento(int idCar, int idShop) {
 		
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader();
-
-			Parent rootNode = fxmlLoader.load(getClass().getResourceAsStream("/boundary/PromuoviEvento.fxml"));
-
-			Stage stage = new Stage();
-			stage.setTitle("Promuovi Evento");
-
-			stage.setScene(new Scene(rootNode, 600, 400));
-			stage.setResizable(false);
-
-			PromuoviEventoBoundary promEvento = fxmlLoader.getController();
-
-			promEvento.loadFormBoundary(idCar, idShop);
-
-			stage.show();
-
-		}  catch (Exception e) {
-			logger.error(e.getMessage());
-			MyIOException.openPageFault("Promuovi Evento");
-		}
+		cercaController.promuoviEvento(idCar, idShop);
 	
 
 	}
 
 
 	private void vediNecessita(int idCar, int idUt) {
-
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader();
-
-			Parent rootNode = fxmlLoader.load(getClass().getResourceAsStream("/boundary/Bacheca.fxml"));
-
-			Stage stage = new Stage();
-			stage.setTitle("Bacheca");
-
-			stage.setScene(new Scene(rootNode, 700, 450));
-			stage.setResizable(false);
-
-			BachecaBoundary bacheca = fxmlLoader.getController();
-
-			bacheca.loadFormBoundary(idCar, idUt);
-
-			stage.show();
-
-		}  catch (Exception e) {
-			logger.error(e.getMessage());
-			MyIOException.openPageFault("Bacheca");
-		}
-
+		cercaController.vediNecessita(idCar, idUt);
 	}
 
 	private void apriDonazione(int idCar, int idUt) {
-		try {
-
-			FXMLLoader fxmlLoader = new FXMLLoader();
-			Parent rootNode = fxmlLoader.load(getClass().getResourceAsStream("/boundary/Donation.fxml"));
-
-			DonationBoundary donationBoundary = fxmlLoader.getController();
-
-			Stage stage = new Stage();
-			stage.setTitle("Donazione");
-
-			donationBoundary.initBoundary(idCar, idUt);
-
-			stage.setScene(new Scene(rootNode, 800, 500));
-			stage.setResizable(false);
-			stage.show();
-
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			MyIOException.openPageFault("Donation");
-		}
+		cercaController.apriDonazione(idCar, idUt);
 
 	}
 
 	private void prenotaTurno(int idCar, int idUt) {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader();
-			Parent rootNode = fxmlLoader.load(getClass().getResourceAsStream("/boundary/Prenota_turno_volontariato.fxml"));
-			PrenotaTurnoBoundary prenotaController = fxmlLoader.getController();
-
-			Stage stage = new Stage();
-			stage.setTitle("Prenota Turno");
-			prenotaController.setData(idCar, idUt);
-			stage.setScene(new Scene(rootNode, 630, 400));
-			stage.setResizable(false);
-			stage.show();
-
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			MyIOException.openPageFault("Prenota Turno Volontario");
-		}
-
+		cercaController.prenotaTurno(idCar, idUt);
 	}
 
 	private void partecipaEvento(int idEvent, int idUt) {
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader();
-			Parent rootNode = fxmlLoader.load(getClass().getResourceAsStream("/boundary/Partecipa_evento.fxml"));
-
-			PartecipaEventoBoundary partecipaEvent = fxmlLoader.getController();
-
-			Stage stage = new Stage();
-			stage.setTitle("Prenota Turno");
-			partecipaEvent.setData(idEvent, idUt);
-			stage.setScene(new Scene(rootNode, 600, 400));
-			stage.setResizable(false);
-			stage.show();
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			MyIOException.openPageFault("Partecipa Evento");
-		}
+		cercaController.partecipaEvento(idEvent, idUt);
 
 	}
 

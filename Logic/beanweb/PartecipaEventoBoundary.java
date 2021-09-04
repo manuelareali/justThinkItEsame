@@ -22,7 +22,7 @@ public class PartecipaEventoBoundary {
 		}
 	
 	private PartecipaEventoBoundary() {
-		partecipaC = PartecipaEventoController.getInstance();
+		partecipaC = new PartecipaEventoController();
 	}
 
 	
@@ -43,8 +43,8 @@ public class PartecipaEventoBoundary {
 			return false;
 		}
 		else {
-			partecipaC.getInstance().setDataController(idEvento, idUtente);
-			partecipaC.getInstance().partecipaEvento(Float.parseFloat(importo));
+			partecipaC.setDataController(idEvento, idUtente);
+			partecipaC.partecipaEvento(Float.parseFloat(importo));
 			return true;
 		}
 	}

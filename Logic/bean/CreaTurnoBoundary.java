@@ -22,7 +22,7 @@ import javafx.stage.Window;
 
 public class CreaTurnoBoundary {
 	private static Logger logger = LoggerFactory.getLogger(CreaTurnoBoundary.class.getName());
-	
+	CreaTurnoController creaTurn = new CreaTurnoController();
 
 
 	@FXML
@@ -50,8 +50,9 @@ public class CreaTurnoBoundary {
 
 	@FXML
 	void backPressed(ActionEvent event) {
+		
 
-		this.switchPage(creaTurno.getScene().getWindow());
+		creaTurn.switchPage(creaTurno.getScene().getWindow(), this.caritas);
 
 	}
 
@@ -87,12 +88,11 @@ public class CreaTurnoBoundary {
 	
 	@FXML
 	void creaTurnoPressed(ActionEvent event) {
-		CreaTurnoController creaTurn = new CreaTurnoController();
 		try {
 			if (checker() && isNumeric(numParte.getText())) {
 					creaTurn.creaTurno(caritas, giorni.getValue().toString(), orain.getValue().toString(), oraFin.getValue().toString(),
 							Integer.parseInt(numParte.getText()), note.getText());
-						this.switchPage(creaTurno.getScene().getWindow());
+						creaTurn.switchPage(creaTurno.getScene().getWindow(), caritas);
 				}
 			
 		} catch (NumberFormatException e) {
@@ -114,23 +114,7 @@ public class CreaTurnoBoundary {
 		this.caritas = caritas;
 	}
 	
-	public void switchPage(Window stage) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/gestisci_turni_caritas.fxml"));
-			Parent root = loader.load();
 
-			Stage home = (Stage) stage;
-			home.setScene(new Scene(root, 885, 550));
-			home.show();
-
-			GestisciTurniBoundary gest = loader.getController();
-			gest.loadFormBoundary(caritas); 
-
-		}  catch (Exception e) {
-			logger.error(e.getMessage());
-			MyIOException.openPageFault("Gestisci Turni Caritas");
-		}
-	}
 
 	@FXML
 	void initialize() {
