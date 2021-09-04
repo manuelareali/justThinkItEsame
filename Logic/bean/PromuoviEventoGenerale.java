@@ -6,18 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import controller.GestisciEventiCaritasController;
 import exception.MyException;
-import exception.MyIOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import javafx.stage.Window;
 
 
 public class PromuoviEventoGenerale {
@@ -28,7 +22,7 @@ public class PromuoviEventoGenerale {
 	private int idCar;
 	private String tipo;
 	private int idShop;
-	
+	private GestisciEventiCaritasController switchPage;
 
 	
     @FXML
@@ -56,7 +50,9 @@ public class PromuoviEventoGenerale {
     private Button indietro;
     
 
-    
+    public PromuoviEventoGenerale() {
+    	 switchPage = new GestisciEventiCaritasController();
+    }
  
   
     public void loadId(int idCar) {
@@ -65,8 +61,9 @@ public class PromuoviEventoGenerale {
     
     @FXML
     void indietro(ActionEvent event) {
-        this.switchPage(confermaEventoPressed.getScene().getWindow());
+    	switchPage.switchPage(indietro.getScene().getWindow(), idCar);
        }
+    
 
     @FXML
 	void confermaEventoPressed(ActionEvent event) {
@@ -75,31 +72,15 @@ public class PromuoviEventoGenerale {
 			try {
 					checker();
 					controller.creaEventoGeneral(nome.getText(), tipo, x, note.getText(), this.idCar, this.idShop);
-					this.switchPage(confermaEventoPressed.getScene().getWindow());
+					switchPage.switchPage(confermaEventoPressed.getScene().getWindow(), idCar);
 
 			} catch (MyException e) {
 				logger.error(e.getMessage());
 			}
 	}
     
-    public void switchPage(Window stage) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/gestisci_eventi_caritas.fxml"));
-			Parent root = loader.load();
+  
 
-			Stage home = (Stage) stage;
-			home.setScene(new Scene(root, 800, 500));
-			home.show();
-
-			GestisciEventiCaritasBoundary gest = loader.getController();
-			gest.loadShop(idCar);
-
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			MyIOException.openPageFault("Gestisci Eventi Caritas");
-		}
-	}
-    
 	public boolean checker() throws MyException {
 		if (idCibo.isSelected()) {
 			tipo = "Cibo";

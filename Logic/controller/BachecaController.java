@@ -10,7 +10,7 @@ import entity.Necessita;
 public class BachecaController  {
 
 	
-	private static BachecaController instance = null;
+
 
 	public List<Necessita> loadForm(int idCar) {
 		BachecaDao bacheca = new BachecaDao();
@@ -22,11 +22,6 @@ public class BachecaController  {
 		
 		}
 
-	public static BachecaController getInstance() {
-		if ( BachecaController.instance == null)
-			 BachecaController.instance = new BachecaController();
-		return instance;
-	}
 	
 	
 }

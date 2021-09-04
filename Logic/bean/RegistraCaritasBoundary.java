@@ -85,14 +85,8 @@ public class RegistraCaritasBoundary {
 		try {
 			checker();
 			trigger.isNumeric(telefono.getText());
-			regController.completaButtonPressed(nomeCaritas.getText(), tipo, passwordCaritas.getText(), via.getText(),
-					telefono.getText(), email.getText(), cittadiResidenza.getText());
-
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/Login_boundary.fxml"));
-			Parent root = loader.load();
-			Stage home = (Stage) completaButton.getScene().getWindow();
-			home.setScene(new Scene(root));
-			home.show();
+			regController.register(nomeCaritas.getText(), tipo, passwordCaritas.getText(), via.getText(),
+					telefono.getText(), email.getText(), cittadiResidenza.getText(), completaButton.getScene().getWindow());
 
 		} catch (NumberFormatException e) {
 			logger.error("In Telefono ed in civico devono essere inseriti solo numeri" + e.getMessage());

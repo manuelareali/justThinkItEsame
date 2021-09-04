@@ -6,6 +6,8 @@ import dao.ShopRepository;
 import entity.CaritasUser;
 import entity.EventTab;
 import entity.ShopUser;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class PromuoviEventoController {
 	
@@ -16,6 +18,12 @@ public class PromuoviEventoController {
 	public PromuoviEventoController() {
 		eventDao = new EventoDao();
 		
+	}
+	
+	public void promuoviEvento(String nome, String tipo, String note, Float prezzo, int idCar, int idShop, Window conferma) {
+		creaEventoController(nome, tipo, note, prezzo, idCar, idShop);
+		Stage st = (Stage) conferma;
+		st.close();		
 	}
 	
 

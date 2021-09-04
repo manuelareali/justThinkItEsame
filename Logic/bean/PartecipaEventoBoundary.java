@@ -4,7 +4,6 @@ import java.util.ResourceBundle;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import controller.PartecipaEventoController;
 import exception.MyException;
 import exception.Trigger;
@@ -13,7 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
+
 
 public class PartecipaEventoBoundary {
 
@@ -49,10 +48,7 @@ public class PartecipaEventoBoundary {
 		try {
 			if(trigger.isNumeric(importo.getText())) {
 				PartecipaEventoController parteCon = new PartecipaEventoController();
-				parteCon.setDataController(idEvento, idUtente);
-				parteCon.partecipaEvento(Float.parseFloat(importo.getText()));
-				Stage st = (Stage) partecipa.getScene().getWindow();
-				st.close();
+				parteCon.apriPartecipaEvento(idEvento, idUtente, Float.parseFloat(importo.getText()), partecipa.getScene().getWindow());
 			}
 		} catch (NumberFormatException n) {
 			logger.error("In prezzo Evento non sono presenti solo numeri"+ n.getMessage());

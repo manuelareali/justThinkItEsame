@@ -83,15 +83,9 @@ public class RegistrationShopBoundary {
 			checker();
 			trigger.isNumeric(telNeg.getText());
 			trigger.isNumeric(civicoNeg.getText());
-			regNeg.registraNegozioPressed(tipo, nomeNegozio.getText(), passwordNeg.getText(),
+			regNeg.register(tipo, nomeNegozio.getText(), passwordNeg.getText(),
 					viaNeg.getText() + " " + civicoNeg.getText(), telNeg.getText(), mailNeg.getText(),
-					cittaResNeg.getText());
-
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/Login_boundary.fxml"));
-			Parent root = loader.load();
-			Stage home = (Stage) registraNegozio.getScene().getWindow();
-			home.setScene(new Scene(root));
-			home.show();
+					cittaResNeg.getText(), registraNegozio.getScene().getWindow());
 		} catch (NumberFormatException e) {
 			logger.error("Non sono presenti solo numeri in Telefono o N civico" + e.getMessage());
 		} catch (Exception e) {

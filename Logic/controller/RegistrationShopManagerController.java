@@ -1,8 +1,15 @@
 package controller;
 
 
+import java.io.IOException;
+
 import dao.ShopRepository;
 import entity.ShopUser;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public  class RegistrationShopManagerController {
 
@@ -17,5 +24,17 @@ public  class RegistrationShopManagerController {
 		return id;
 	}
 
+	public void register (String tipo, String nomeNegozio, String passwordNeg, String viaNeg, String telNeg, String mailNeg,String cittaResNeg, Window registraNegozio ) throws IOException {
+		registraNegozioPressed(tipo, nomeNegozio, passwordNeg,
+				viaNeg, telNeg, mailNeg,
+				cittaResNeg);
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/Login_boundary.fxml"));
+		Parent root = loader.load();
+		Stage home = (Stage) registraNegozio;
+		home.setScene(new Scene(root));
+		home.show();
+	}
+	
 
 }

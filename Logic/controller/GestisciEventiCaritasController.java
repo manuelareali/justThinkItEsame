@@ -2,12 +2,21 @@ package controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import bean.GestisciEventiCaritasBoundary;
 import dao.CaritasRepository;
 import dao.EventoDao;
 import dao.ShopRepository;
 import entity.CaritasUser;
 import entity.EventTab;
 import entity.ShopUser;
+import exception.MyIOException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class GestisciEventiCaritasController {
 
@@ -26,6 +35,25 @@ public class GestisciEventiCaritasController {
 
 	public GestisciEventiCaritasController() {
 		eventDao = new EventoDao();
+	}
+	
+	public void switchPage(Window stage, int idCar) {
+		Logger logger = LoggerFactory.getLogger(GestisciEventiCaritasController.class.getName());
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/gestisci_eventi_caritas.fxml"));
+			Parent root = loader.load();
+
+			Stage home = (Stage) stage;
+			home.setScene(new Scene(root, 800, 500));
+			home.show();
+
+			GestisciEventiCaritasBoundary gest = loader.getController();
+			gest.loadShop(idCar);
+
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			MyIOException.openPageFault("Gestisci Eventi Caritas");
+		}
 	}
 
 	public boolean cancellaEvento(int idEvento) {

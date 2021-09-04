@@ -3,10 +3,8 @@ package bean;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import controller.PrenotaTurnoController;
 import entity.Orario;
 import exception.MyException;
@@ -15,7 +13,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class PrenotaTurnoBoundary {
 
@@ -51,10 +48,9 @@ public class PrenotaTurnoBoundary {
 	void prenotaTurno(ActionEvent event) {
 		try {
 			if(checker()) {
-				prenotaC.prenotaTurno(turni.getValue().toString(), cbOraInizio.getValue().toString(),
-						cbOraFine.getValue().toString(), cv.getText());
-				Stage st = (Stage) prenota.getScene().getWindow();
-				st.close();
+				PrenotaTurnoController prenotaC = new PrenotaTurnoController();
+				prenotaC.prenotaTurnoContr(turni.getValue().toString(), cbOraInizio.getValue().toString(),
+						cbOraFine.getValue().toString(), cv.getText(), prenota.getScene().getWindow());
 			}
 		} catch (MyException e) {
 			logger.error(e.getMessage());

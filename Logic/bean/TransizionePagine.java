@@ -10,9 +10,7 @@ import com.sothawo.mapjfx.Projection;
 import controller.CaritasHomeController;
 import controller.CercaCaritasController;
 import controller.ShopHomeController;
-import exception.MyException;
 import exception.MyIOException;
-import exception.Trigger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,6 +26,8 @@ public class TransizionePagine {
 
 	private static Logger logger = LoggerFactory.getLogger(TransizionePagine.class.getName());
 
+	
+	
 	
 	
 	public void visualizzaShopHomePage( Window stage, int idShop) {
@@ -212,17 +212,6 @@ public class TransizionePagine {
 				MyIOException.openPageFault("Login");
 			}
 	}
-	
-	public boolean isNumeric(String str) { 
-		  try {  
-		    Integer.parseInt(str); 
-		    return true;
-		  } catch(NumberFormatException e){  
-			  logger.error("Inserisci correttamente il numero di telefono");
-		    return false;  
-		  } 
-		}
-
 	
 
 	

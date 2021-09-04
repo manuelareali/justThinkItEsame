@@ -11,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 
 public class PromuoviEventoBoundary {
@@ -49,9 +48,7 @@ public class PromuoviEventoBoundary {
 	    	Trigger trigger = new Trigger();
 			try {
 				if (!checker() && trigger.isNumeric(prezzo.getText())) {
-					promuoviEvento.creaEventoController(nome.getText(), tipo, note.getText(), Float.parseFloat(prezzo.getText()), idCar, idShop);
-					Stage st = (Stage) conferma.getScene().getWindow();
-					st.close();				}
+					promuoviEvento.promuoviEvento(nome.getText(), tipo, note.getText(), Float.parseFloat(prezzo.getText()), idCar, idShop, conferma.getScene().getWindow());		}
 			} catch (NumberFormatException n) {
 				logger.error("In Prezzo non sono presenti solo numeri" + n.getMessage());
 			} catch (MyException e) {
@@ -78,7 +75,7 @@ public class PromuoviEventoBoundary {
 				tipo = "Cibo";
 			}
 			if(nome.getText().isEmpty() && prezzo.getText().isEmpty()) {
-				throw new MyException("Devi selezionare una riga della taballa",MyException.CAMPI_VUOTI);
+				throw new MyException("Devi selezionare una riga della tabella",MyException.CAMPI_VUOTI);
 
 			}
 		

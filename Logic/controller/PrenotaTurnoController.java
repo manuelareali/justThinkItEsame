@@ -5,7 +5,8 @@ import dao.CreaTurnoDao;
 import entity.Orario;
 import entity.Turno;
 import entity.PartecipaTurno;
-import javafx.event.ActionEvent;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 
 public class PrenotaTurnoController {
@@ -26,6 +27,12 @@ public class PrenotaTurnoController {
 		return instance;
 	}
 
+	
+	public void prenotaTurnoContr(String turni, String cbOraInizio, String cbOraFine, String cv, Window prenota ) {
+		prenotaTurno(turni, cbOraInizio, cbOraFine, cv);
+		Stage st = (Stage) prenota;
+		st.close();
+	}
 
 	public boolean prenotaTurno(String giorno, String oraIn, String oraFin, String cv) {
 		boolean error;
