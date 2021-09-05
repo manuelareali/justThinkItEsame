@@ -70,7 +70,7 @@ public class GestisciEventiCaritasController {
 	}
 	
 	public void switchPage(Window stage, int idCar) {
-		Logger logger = LoggerFactory.getLogger(GestisciEventiCaritasController.class.getName());
+	
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/gestisci_eventi_caritas.fxml"));
 			Parent root = loader.load();
