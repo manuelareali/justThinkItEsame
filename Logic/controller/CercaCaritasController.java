@@ -215,7 +215,7 @@ public class CercaCaritasController {
 			((bean.CercaCaritas) cercaBean).initMarkers(idUser, ruoloUser);
 		}
 		else if (cercaBean.getClass() == beanweb.CercaCaritas.class) {
-				((beanweb.CercaCaritas) cercaBean).getInstance().setUser(idUser, ruoloUser);
+				((beanweb.CercaCaritas) cercaBean).setUser(idUser, ruoloUser);
 		}
 	}
 

@@ -1,10 +1,7 @@
 package bean;
 
-import java.io.IOException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import exception.MyIOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

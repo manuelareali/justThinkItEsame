@@ -1,11 +1,7 @@
 package exception;
 
 import java.io.IOException;
-import java.util.Optional;
-
-import dao.UserDao;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 
 public class MyIOException extends IOException{

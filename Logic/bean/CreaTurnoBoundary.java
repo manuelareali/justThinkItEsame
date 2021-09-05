@@ -1,24 +1,16 @@
 package bean;
 
-import java.io.IOException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import controller.CreaTurnoController;
 import exception.MyException;
-import exception.MyIOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import javafx.stage.Window;
+
 
 public class CreaTurnoBoundary {
 	private static Logger logger = LoggerFactory.getLogger(CreaTurnoBoundary.class.getName());
