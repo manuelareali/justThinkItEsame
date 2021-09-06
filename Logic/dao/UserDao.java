@@ -13,7 +13,7 @@ import connector.Connector;
 public class UserDao {
 
 	private Connector connector;
-    private static final Logger logger = LoggerFactory.getLogger(VolunteerRepository.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserDao.class);
 
 	
 	public UserDao() {
