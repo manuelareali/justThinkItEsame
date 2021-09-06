@@ -98,7 +98,7 @@ public class OfferteNegoziCaritas {
          	
              rowAffected = pstmt.executeUpdate();
 
-             if (rowAffected == 1) {
+             if (rowAffected > 0 ) {
                  logger.debug(SUCCESS);
              } 
              else { logger.debug(FAILED);
