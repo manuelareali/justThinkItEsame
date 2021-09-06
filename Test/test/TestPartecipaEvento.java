@@ -8,7 +8,7 @@ import controller.PartecipaEventoController;
 
 //Riccardo Buraioli
 public class TestPartecipaEvento {
-	PartecipaEventoController partecipaEv = PartecipaEventoController.getInstance();
+	PartecipaEventoController partecipaEv = new PartecipaEventoController();
 	
 
 	@Test

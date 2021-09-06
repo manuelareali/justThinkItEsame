@@ -8,7 +8,7 @@ import controller.CreaNecessitaController;
 
 //Manuela Reali
 public class TestNecessita {
-	CreaNecessitaController creaNece = CreaNecessitaController.getInstace();
+	CreaNecessitaController creaNece = new CreaNecessitaController();
 	
 
 	
