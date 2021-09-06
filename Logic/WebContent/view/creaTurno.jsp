@@ -5,13 +5,14 @@
 Class.forName("com.mysql.jdbc.Driver");
 if (request.getParameter("OK") != null) {
 	if(request.getParameter("oraInizio") != request.getParameter("oraFine") ){
-		if (CreaTurnoBoundary.getInstance().creaTurnoPressed(request.getParameter("nome_giorno"),
-				request.getParameter("oraInizio"), request.getParameter("oraFine"), request.getParameter("numMaxParte"),
-				request.getParameter("note")) == true) {
+		if(CreaTurnoBoundary.getInstance().isNumeric( request.getParameter("numMaxParte"))){
+			if (CreaTurnoBoundary.getInstance().creaTurnoPressed(request.getParameter("nome_giorno"),
+					request.getParameter("oraInizio"), request.getParameter("oraFine"), request.getParameter("numMaxParte"),
+					request.getParameter("note")) == true) {
 %>
 <jsp:forward page="gestisciTurniCaritas.jsp" />
 <%
-	}
+	}}
 }
 }
 

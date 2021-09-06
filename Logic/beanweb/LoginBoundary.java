@@ -25,7 +25,7 @@ public class LoginBoundary {
 		
 	public String loginPressed(String username, String password) {
 		UserHomeController userHomeController;
-			if (loginC.trovaID(username)!= 0) {
+			if (loginC.trovaID(username)!= 0 && loginC.trovaID(password) != 0) {
 			String loggedUser = loginC.loginAccess(username, password);
 			if (loggedUser.equalsIgnoreCase("Volontario")) {
 				userHomeBoundary = userHomeBoundary.getInstance();				

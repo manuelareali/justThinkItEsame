@@ -9,7 +9,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
 
@@ -101,10 +100,7 @@ public class ShopHomeBoundary {
 	public void initData(int id, String nome) {
 		this.idShop = id;
     	nomeCognome.setText(nome);
-    	final Circle clip = new Circle();
-    	clip.setCenterX(25);
-    	clip.setCenterY(58);
-    	clip.setRadius(200);
+
 	}
 
 

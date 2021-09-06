@@ -32,6 +32,7 @@
  		break;
  		case "Niente":
 %>
+<jsp:forward page="index.jsp" />
 <% 		
  	break;
  		}}

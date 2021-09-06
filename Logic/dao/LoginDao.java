@@ -17,12 +17,10 @@ public class LoginDao {
     private static final Logger logger = LoggerFactory.getLogger(LoginDao.class);
 
       
-    
-    
-	  public String getTableUser() {
-	        return this.tableUser;
-	    }
-	  
+    public String getTableUser() {
+        return this.tableUser;
+    }
+  
 	  public void setTableUser(String a) {
 		  this.tableUser = a;
 	  }

@@ -207,7 +207,7 @@ List<CoordinateMap> donazione = CercaCaritas.getInstance().initMarkersDonazione(
 		<div>
 			<input type="radio" class="gaucher" id="4" name="4"
 				onClick=" checkRadio(name, this)" value="4">
-			<label for="4">MioMarker</label>
+			<label for="4">Registra Posizione</label>
 		</div>
 	</div>
 
